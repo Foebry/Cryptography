@@ -1,4 +1,4 @@
-
+import random
 
 
 def validate(string):
@@ -77,8 +77,11 @@ def encrypt(data, keyword):
         new_string = data.encode("utf-8").hex()
         # reverse
         new_string = reverse(new_string)
-        # paste behind keyword in bytes
-        return keyword.encode("utf-8").hex() + new_string
+
+        position = random.randrange(len(new_string))
+        encrypted_string = new_string[:position] + keyword.encode("utf-8").hex() + new_string[position:]
+
+        return encrypted_string
 
 
 
